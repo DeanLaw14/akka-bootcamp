@@ -36,6 +36,7 @@ namespace WinTail
         #endregion
 
         #region Error messages
+
         /// <summary>
         /// Base class for signalling that a user input was invalid
         /// </summary>
@@ -45,9 +46,33 @@ namespace WinTail
             {
                 Reason = reason;
             }
-            public string Reason { get; private set; }
 
+            public string Reason { get; private set; }
         }
-        #endregion
+
+        /// <summary>
+        /// User provided blank input
+        /// </summary>
+        public class NullInputError : InputError
+        {
+            public NullInputError(string reason)
+                : base(reason)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// User provided invalid input
+        /// </summary>
+        public class ValidationError : InputError
+        {
+            public ValidationError(string reason)
+                : base(reason)
+            {
+
+            }
+        }
     }
+    #endregion
 }
